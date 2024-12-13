@@ -71,8 +71,8 @@ header("X-Frame-Options: DENY"); // Legacy
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == "certificates.php") {echo "active";} ?>" href="certificates.php">Certificates</a>
-                    </li>
-                <?php } ?>
+                    </li>                  
+                <?php } ?>    
             </ul>
 
             <ul class="nav navbar-nav pull-right">
@@ -108,10 +108,10 @@ header("X-Frame-Options: DENY"); // Legacy
                     <span class="fa fa-stack-1x text-white"><?php echo $session_contact_initials; ?></span>
                 </span>
             <?php } ?>
-        </div>
+        </div>   
 
-        <div class="col-md-11 p-0">
-            <h4>Welcome, <strong><?php echo stripslashes(nullable_htmlentities($session_contact_name)); ?></strong>!</h4>
+        <div class="col-md-11 p-0">          
+            <h4><?=(isset($session_contact_sex) && $session_contact_sex=='female')?((isset($lang['welcome_label_f']) && !empty($lang['welcome_label_f']))?($lang['welcome_label_f']):('Welcome')):((isset($lang['welcome_label_m']) && !empty($lang['welcome_label_m']))?($lang['welcome_label_m']):('Welcome')); ?>&nbsp;<strong><?php echo stripslashes(nullable_htmlentities($session_contact_name)); ?></strong>!</h4>
             <hr>
         </div>
     </div>

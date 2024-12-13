@@ -63,6 +63,20 @@ $session_contact_photo = sanitizeInput($contact['contact_photo']);
 $session_contact_pin = sanitizeInput($contact['contact_pin']);
 $session_contact_primary = intval($contact['contact_primary']);
 
+// Check Male or Female
+
+$contacts_arr = explode(" ", $session_contact_name);
+
+if(!empty($contacts_arr) && array_key_exists(0,$contacts_arr) && !empty($contacts_arr[0]))
+{
+    $name=$contacts_arr[0];
+    if(strtolower(substr($name, -1))=='a' && strtolower($name)!='andrea')
+    {
+        $session_contact_sex='female';
+    }
+    else $session_contact_sex='male';
+}
+
 $session_contact_is_technical_contact = false;
 $session_contact_is_billing_contact = false;
 if ($contact['contact_technical'] == 1) {
